@@ -1,0 +1,77 @@
+/* Creamos las fuentes de texto personalizadas */
+@font-face {
+    font-family: 'Negrita';
+    src: url(/Ejercicio6/fuente/Kanit-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Light';
+    src: url(/Ejercicio6/fuente/Kanit-ExtraLightItalic.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Regular';
+    src: url(/Ejercicio6/fuente/Kanit-Thin.ttf) format('truetype');
+}
+
+/* Valores predeterminados */
+*{
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Personalizamos el contenido y estilo del body */
+body{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background-color: rgb(26, 25, 25);
+    justify-content: center;
+}
+
+/* Personalizacion del header */
+.cabecera{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cabecera > h1{
+    font-family: 'Negrita';
+}
+
+.cabecera > h3{
+    margin: 5px 0px 0px 0px;
+    font-family: 'Light';
+}
+
+
+/* Persoonalizamos la seleccion de dificultad */
+.banner{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 80px;
+    font-family: 'Regular';
+}
+
+.boton{
+    padding: 15px;
+    margin: 20px;
+    border: 3px solid goldenrod;
+    border-radius: 1em;
+    font-family: 'Negrita';
+    font-size: large;
+    background-color: white;
+    transition: backgroun-color 1s ease;
+}
+
+.boton:hover{
+    background-color: rgb(26, 25, 25);
+    color: white;
+}
+
+
+
+
