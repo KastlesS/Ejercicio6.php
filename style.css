@@ -91,9 +91,14 @@ table{
 }
 
 td{
-    padding: 15px;
+    padding: 10px;
     border: 2px solid white;
     border-radius: 2px;
+}
+
+.imagen{
+    width: 15px;
+    height: auto;
 }
 
 

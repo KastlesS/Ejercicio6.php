@@ -19,7 +19,7 @@ function crearTabla($array):string{
         foreach($array as $fila){
             $texto.="<tr>";
             foreach($fila as $celda){
-                $texto.="<td>{$celda}</td>";
+                $texto.="<td><form method='POST'><input type='hidden' value='{$celda}'></input><button class='botonInput'><img src='int.png' alt='imagenincógnita' class='imagen'></img></form></td>";
             }
             $texto.="</tr>";
         }
