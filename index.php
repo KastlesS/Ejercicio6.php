@@ -16,10 +16,10 @@
     <!-- Seleccion de dificultad -->
     <section class="banner">
         <h2>Selecciona la dificultad: </h2>
-        <form action="<?$_SERVER['PHP_SELF']?>" method="get">
-            <button type="submit" class="boton" value="easy" title="Tabla 5x5 con 10 intentos">Facil</button>
-            <button type="submit" class="boton" value="normal" title="Tabla 5x10 con 10 intentos">Normal</button>
-            <button type="submit" class="boton" value="hard" title="Tabla 10x10 con 5 intentos">Dificil</button>
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="get">
+            <button type="submit" class="boton" name="difficulty" value="easy" title="Tabla 5x5 con 10 intentos">Facil</button>
+            <button type="submit" class="boton" name="difficulty" value="normal" title="Tabla 5x10 con 10 intentos">Normal</button>
+            <button type="submit" class="boton" name="difficulty" value="hard" title="Tabla 10x10 con 5 intentos">Dificil</button>
         </form>
     </section>
 

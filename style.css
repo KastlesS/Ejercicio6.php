@@ -1,17 +1,17 @@
 /* Creamos las fuentes de texto personalizadas */
 @font-face {
     font-family: 'Negrita';
-    src: url(/Ejercicio6/fuente/Kanit-Regular.ttf) format('truetype');
+    src: url(/Ejercicio6/Ejercicio6.php/fuente/Kanit-Regular.ttf) format('truetype');
 }
 
 @font-face {
     font-family: 'Light';
-    src: url(/Ejercicio6/fuente/Kanit-ExtraLightItalic.ttf) format('truetype');
+    src: url(/Ejercicio6/Ejercicio6.php/fuente/Kanit-ExtraLightItalic.ttf) format('truetype');
 }
 
 @font-face {
     font-family: 'Regular';
-    src: url(/Ejercicio6/fuente/Kanit-Thin.ttf) format('truetype');
+    src: url(/Ejercicio6/Ejercicio6.php/fuente/Kanit-Thin.ttf) format('truetype');
 }
 
 /* Valores predeterminados */
