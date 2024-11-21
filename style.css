@@ -72,6 +72,28 @@ body{
     color: white;
 }
 
+/* Personalizamos el main (contenido principal) */
+.principal{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-bottom: 50px;
+}
 
+
+/* Personalizamos la tabla */
+table{
+    border: 2px solid white;
+    border-radius: 2px;
+    padding: 2px;
+    border-collapse: collapse;
+}
+
+td{
+    padding: 15px;
+    border: 2px solid white;
+    border-radius: 2px;
+}
 
 
