@@ -14,12 +14,12 @@ function crearArray($filas,$columnas):array{
 }
 
 /* Creamos una función que genere una tabla para el html según el array seleccionado */
-function crearTabla($array):string{
+function crearTabla($array,$intentos):string{
     $texto="<table>";
         foreach($array as $fila){
             $texto.="<tr>";
             foreach($fila as $celda){
-                $texto.="<td><form method='POST'><input type='hidden' value='{$celda}'></input><button class='botonInput'><img src='int.png' alt='imagenincógnita' class='imagen'></img></form></td>";
+                $texto.="<td><form method='POST'><input type='hidden' value='{$celda}' name='valor'></input><input type='hidden' name='intentos' value='{$intentos}'></input><button class='botonInput'>{$celda}</img></form></td>";
             }
             $texto.="</tr>";
         }
@@ -38,32 +38,55 @@ function ponerTesoro(&$array){
     $array[$fila][$columna]=1;
 }
 
-if(isset($_GET["difficulty"])){
+$mensaje2="";
+
+/* Creamos una variable con los intentos que tiene el usuario */
+$intentos=0;
+
+if(isset($_POST['intentos'])){
+    $intentos=$_POST['intentos'];
+}
+
+if(isset($_GET["difficulty"]) && $intentos==0){
     /* Recogemos la dificultad: */
     $mensaje="Has escogido la dificultad: ".$_GET["difficulty"];
     $dificultad=$_GET["difficulty"];
     /* Creamos un array que va a ser la tabla del juego */
     $array=[];
-    /* Creamos una variable con los intentos que tiene el usuario */
-    $intentos=0;
     /* Ahora tenemos que crear sus filas y columnas dependiendo de la difucultad seleccionada */
     if($dificultad=="Facil"){
         $array=crearArray(5,5);
         ponerTesoro($array);
         $intentos=10;
-        $tabla=crearTabla($array);
+        $tabla=crearTabla($array,$intentos);
+        $mensaje2="NUMERO DE INTENTOS: {$intentos}";
     }else if($dificultad=="Normal"){
         $array=crearArray(10,5);
         ponerTesoro($array);
         $intentos=10;
-        $tabla=crearTabla($array);
+        $tabla=crearTabla($array,$intentos);
+        $mensaje2="NUMERO DE INTENTOS: {$intentos}";
     }else if($dificultad=="Dificil"){
         $array=crearArray(10,10);
         ponerTesoro($array);
         $intentos=5;
-        $tabla=crearTabla($array);
+        $tabla=crearTabla($array,$intentos);
+        $mensaje2="NUMERO DE INTENTOS: {$intentos}";
     }    
 }
+
+if(isset($_POST['valor'])){
+    $valor=$_POST['valor'];
+    if($valor==0){
+        $intentos--;
+        $_POST['intentos']=$intentos;
+        $mensaje2="No has acertado :( <br><br> INTENTOS RESTANTES: {$intentos}";
+    }else{
+        $mensaje2="HAS ACERTADO :)!!!";
+        $intentos=0;
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -96,6 +119,7 @@ if(isset($_GET["difficulty"])){
         <div class="contenedor">
             <?=$tabla?>
         </div>
+        <p><?=$mensaje2?></p>
     </main>
 </body>
 </html>
