@@ -1,4 +1,5 @@
 <?php
+session_start();
 $mensaje="";
 
 /* Creamos una funcion que devuleva un array el cual es la tabla del juego */
@@ -43,8 +44,8 @@ $mensaje2="";
 /* Creamos una variable con los intentos que tiene el usuario */
 $intentos=0;
 
-if(isset($_POST['intentos'])){
-    $intentos=$_POST['intentos'];
+if(isset($_SESSION['intentos'])){
+    $intentos=$_SESSION['intentos'];
 }
 
 if(isset($_GET["difficulty"]) && $intentos==0){
@@ -60,18 +61,24 @@ if(isset($_GET["difficulty"]) && $intentos==0){
         $intentos=10;
         $tabla=crearTabla($array,$intentos);
         $mensaje2="NUMERO DE INTENTOS: {$intentos}";
+        $_SESSION['tabla']=$tabla;
+        $_SESSION['intentos']=$intentos;
     }else if($dificultad=="Normal"){
         $array=crearArray(10,5);
         ponerTesoro($array);
         $intentos=10;
         $tabla=crearTabla($array,$intentos);
         $mensaje2="NUMERO DE INTENTOS: {$intentos}";
+        $_SESSION['tabla']=$tabla;
+        $_SESSION['intentos']=$intentos;
     }else if($dificultad=="Dificil"){
         $array=crearArray(10,10);
         ponerTesoro($array);
         $intentos=5;
         $tabla=crearTabla($array,$intentos);
         $mensaje2="NUMERO DE INTENTOS: {$intentos}";
+        $_SESSION['tabla']=$tabla;
+        $_SESSION['intentos']=$intentos;
     }    
 }
 
