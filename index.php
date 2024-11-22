@@ -48,6 +48,10 @@ if(isset($_SESSION['intentos'])){
     $intentos=$_SESSION['intentos'];
 }
 
+if(isset($_SESSION['tabla'])){
+    $tabla=$_SESSION['tabla'];
+}
+
 if(isset($_GET["difficulty"]) && $intentos==0){
     /* Recogemos la dificultad: */
     $mensaje="Has escogido la dificultad: ".$_GET["difficulty"];
@@ -86,11 +90,13 @@ if(isset($_POST['valor'])){
     $valor=$_POST['valor'];
     if($valor==0){
         $intentos--;
-        $_POST['intentos']=$intentos;
+        $_SESSION['intentos']=$intentos;
         $mensaje2="No has acertado :( <br><br> INTENTOS RESTANTES: {$intentos}";
     }else{
         $mensaje2="HAS ACERTADO :)!!!";
         $intentos=0;
+        $_SESSION['intentos']=$intentos;
+        $tabla="";
     }
 }
 
