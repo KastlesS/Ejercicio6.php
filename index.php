@@ -20,7 +20,7 @@ function crearTabla($array,$intentos):string{
         foreach($array as $fila){
             $texto.="<tr>";
             foreach($fila as $celda){
-                $texto.="<td><form method='POST'><input type='hidden' value='{$celda}' name='valor'></input><input type='hidden' name='intentos' value='{$intentos}'></input><button class='botonInput'>{$celda}</img></form></td>";
+                $texto.="<td><form method='POST'><input type='hidden' value='{$celda}' name='valor'></input><button class='botonInput'><img src='int.png' alt='' class='imagen'></form></td>";
             }
             $texto.="</tr>";
         }
@@ -48,7 +48,7 @@ if(isset($_SESSION['intentos'])){
     $intentos=$_SESSION['intentos'];
 }
 
-if(isset($_SESSION['tabla'])){
+if(isset($_SESSION['tabla']) && $intentos!=0){
     $tabla=$_SESSION['tabla'];
 }
 
@@ -88,12 +88,16 @@ if(isset($_GET["difficulty"]) && $intentos==0){
 
 if(isset($_POST['valor'])){
     $valor=$_POST['valor'];
-    if($valor==0){
+    if($valor==0 && $intentos > 0){
         $intentos--;
         $_SESSION['intentos']=$intentos;
         $mensaje2="No has acertado :( <br><br> INTENTOS RESTANTES: {$intentos}";
-    }else{
-        $mensaje2="HAS ACERTADO :)!!!";
+    }else if($valor==0 && $intentos==0){
+        $mensaje2="¡HAS PERDIDO! <br> No te quedan intentos. Vuelve a jugar o cambia la dificultad.";
+        $_SESSION['intentos']=$intentos;
+        $tabla="";
+    }else if($valor==1){
+        $mensaje2="HAS ACERTADO :)!!! Juega otra partida o cambia de dificultad.";
         $intentos=0;
         $_SESSION['intentos']=$intentos;
         $tabla="";
